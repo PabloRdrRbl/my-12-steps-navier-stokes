@@ -17,6 +17,7 @@ plt.plot(np.linspace(0, 2, nx), u)
 
 un = np.empty(nx)  # Initialize a temporary array
 
+# Solution
 for n in range(nt):
     un = u.copy()
     for i in range(1, nx):
