@@ -5,8 +5,10 @@ import matplotlib.pyplot as plt
 def linearconv(nx):
     dx = 2 / (nx - 1)  # Spatial domain has 2 units length
     nt = 25  # Number of time steps
-    dt = 0.025  # Amount of time each time steps takes
     c = 1  # Wave speed
+    sigma = 0.5  # Courant number
+
+    dt = sigma * dx
 
     # Initial conditions
     u = np.ones(nx)
@@ -31,5 +33,5 @@ def linearconv(nx):
 
 
 if __name__ == '__main__':
-    for nx in [41, 51, 61, 71, 81, 91]:
+    for nx in [41, 51, 61, 71, 81, 91, 341]:
         linearconv(nx)
