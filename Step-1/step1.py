@@ -1,7 +1,5 @@
 import numpy as np
 import matplotlib.pyplot as plt
-import time
-import sys
 
 # Evenly spaced grid (uniformemente distribuida)
 nx = 41
@@ -12,13 +10,12 @@ c = 1  # Wave speed
 
 # Initial conditions
 u = np.ones(nx)
-u[0.5 / dx:1 / dx + 1] = 2  # u = 2 between 0.5 and 1
+u[0.5 / dx: 1 / dx + 1] = 2  # u = 2 between 0.5 and 1
 
 # Printing u
 plt.plot(np.linspace(0, 2, nx), u)
-plt.show()
 
-un = np.ones(nx)  # Initialize a temporary array
+un = np.empty(nx)  # Initialize a temporary array
 
 for n in range(nt):
     un = u.copy()
@@ -27,4 +24,6 @@ for n in range(nt):
 
 # Printing the new u
 plt.plot(np.linspace(0, 2, nx), u)
+
+plt.savefig('u_profile.png')
 plt.show()
