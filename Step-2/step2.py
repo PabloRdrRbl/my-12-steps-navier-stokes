@@ -1,31 +1,40 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-# Grid parameters
-nx = 41
-dx = 2. / (nx - 1)
-nt = 20
-dt = 0.025
 
-# Initial conditions
-u = np.ones(nx)
-u[0.5 / dx: 1 / dx + 1] = 2
+def linearconv(nx):
+    # Grid parameters
+    nx = 41
+    dx = 2. / (nx - 1)
+    nt = 20
+    sigma = 0.5  # Courant number
 
-# Printing u
-plt.plot(np.linspace(0, 2, nx), u)
+    dt = sigma * dx
 
-un = np.empty(nx)  # Temprary array to hold the time iteration
+    # Initial conditions
+    u = np.ones(nx)
+    u[0.5 / dx: 1 / dx + 1] = 2
 
-# Solution
-for i in range(nt):
-    un = u.copy()
-    for i in range(1, nx):  # We are not taking indexes 0 and -1
+    # Printing u
+    plt.plot(np.linspace(0, 2, nx), u)
 
-        # given the boundary condition
-        u[i] = un[i] - un[i] * dt / dx * (un[i] - un[i - 1])
+    un = np.empty(nx)  # Temprary array to hold the time iteration
 
-# Printing the new u
-plt.plot(np.linspace(0, 2, nx), u)
+    # Solution
+    for i in range(nt):
+        un = u.copy()
+        for i in range(1, nx):  # We are not taking indexes 0 and -1
 
-plt.savefig('u_profile.png')
-plt.show()
+            # given the boundary condition
+            u[i] = un[i] - un[i] * dt / dx * (un[i] - un[i - 1])
+
+    # Printing the new u
+    plt.plot(np.linspace(0, 2, nx), u)
+
+    plt.savefig('u_profile.png')
+    plt.show()
+
+
+if __name__ == '__main__':
+    for nx in [41, 51, 61, 71, 81, 91, 341]:
+        linearconv(nx)
