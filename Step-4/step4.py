@@ -37,7 +37,7 @@ u = np.asarray([ufunc(t, x0, nu) for x0 in x])
 plt.figure(figsize=(11, 7), dpi=100)
 
 # Ploting the initial problem
-plt.plot(x, u, marker='o', lw=2)
+plt.plot(x, u, marker='o', lw=2, label='Initial')
 
 # Solving equation
 for n in range(nt):
