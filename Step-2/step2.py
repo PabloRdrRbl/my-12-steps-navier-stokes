@@ -7,9 +7,7 @@ def linearconv(nx):
     nx = 41
     dx = 2. / (nx - 1)
     nt = 20
-    sigma = 0.5  # Courant number
-
-    dt = sigma * dx
+    dt = 0.025
 
     # Initial conditions
     u = np.ones(nx)
@@ -36,5 +34,5 @@ def linearconv(nx):
 
 
 if __name__ == '__main__':
-    for nx in [41, 51, 61, 71, 81, 91, 341]:
+    for nx in [41, 51, 61, 71, 81, 91, 141]:
         linearconv(nx)

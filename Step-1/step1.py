@@ -2,12 +2,13 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-def linearconv(nx):
+def linearconv(nx, sigma):
     dx = 2 / (nx - 1)  # Spatial domain has 2 units length
     nt = 25  # Number of time steps
     c = 1  # Wave speed
-    sigma = 0.5  # Courant number
 
+    # Courant number, CFL condition
+    # CFL < 1
     dt = sigma * dx
 
     # Initial conditions
@@ -28,10 +29,16 @@ def linearconv(nx):
     # Printing the new u
     plt.plot(np.linspace(0, 2, nx), u)
 
-    plt.savefig('u_profile.png')
-    plt.show()
+    plt.title('Using $nx = %d$ and $\sigma = %1.1f$' % (nx, sigma))
 
+    plt.savefig('image_output/u_profile_sigma_%d_nx_%d.png' % (sigma * 10, nx))
+    # plt.show()
+    # Cleaning the figure
+    # [http://stackoverflow.com/questions/8213522/matplotlib-
+    # clearing-a-plot-when-to-use-cla-clf-or-close]
+    plt.clf()
 
 if __name__ == '__main__':
-    for nx in [41, 51, 61, 71, 81, 91, 341]:
-        linearconv(nx)
+    for sigma in [0.5, 1, 1.5]:
+        for nx in [41, 51, 61, 71, 81, 91, 341]:
+            linearconv(nx, sigma)
