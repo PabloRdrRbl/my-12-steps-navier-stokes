@@ -1,3 +1,6 @@
+# ME 702 - Computational Fluid Dynamics - Video Lesson 7
+# Example 1
+
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -52,4 +55,6 @@ for it in range(nt):
 
         plt.draw()
 
-        plt.pause(0.05)
+        plt.pause(0.01)
+
+plt.hold()
