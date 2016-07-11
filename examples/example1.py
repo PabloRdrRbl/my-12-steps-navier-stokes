@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-# plt.ion()  # Turn interactive mode on for plotting
+plt.ion()  # Turn interactive mode on for plotting
 
 # Grid parameters
 nx = 41
@@ -48,7 +48,8 @@ for it in range(nt):
         # CD in x:
 #        u[i] = un[i] - c * dt / dx * (un[i + 1] - un[i - 1])
 
-    line.set_ydata(u)
+        line.set_ydata(u)
 
-    plt.draw()
-    plt.show()
+        plt.draw()
+
+        plt.pause(0.05)
