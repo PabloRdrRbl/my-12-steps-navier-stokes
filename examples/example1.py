@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-plt.ion()  # Turn interactive mode on for plotting
+# plt.ion()  # Turn interactive mode on for plotting
 
 # Grid parameters
 nx = 41
@@ -29,6 +29,7 @@ for i in range(nx):
 uzero = u.copy()
 
 # Plotting setup
+plt.figure()
 line, = plt.plot(x, uzero, 'k--')
 plt.axis([0, 2, -2, 2])
 plt.xlabel('x')
@@ -50,3 +51,4 @@ for it in range(nt):
     line.set_ydata(u)
 
     plt.draw()
+    plt.show()
